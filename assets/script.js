@@ -1,11 +1,26 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-let size = 30;
-let x = 50;
-let y = 50;
+let size = 20;
+let isPressed = false;
 
-canvas.addEventListener('mousedown', () => {});
+canvas.addEventListener('mousedown', () => {
+    ifPressed = true;
+});
+
+canvas.addEventListener('mouseup', () => {
+    ifPressed = false;
+});
+
+canvas.addEventListener('mousemove', (e) => {
+    if(isPressed) {
+        const x = e.offsetX;
+        const y = e.offsetY;
+
+        drawCricle(x, y);
+    }
+
+});
 
 function drawCricle(x, y) {
     ctx.beginPath();
@@ -13,11 +28,11 @@ function drawCricle(x, y) {
     ctx.fill();
 }
 
-function draw() {
+/*function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawCricle(50, 50);
+    drawCricle(x++, y);
 
     requestAnimationFrame(draw);
 }
 
-draw();
+draw(); */
