@@ -1,15 +1,17 @@
 const canvas = document.getElementById('canvas');
+const increaseBtn = document.getElementById('increase');
+const decreaseBtn = document.getElementById('decrease');
 const ctx = canvas.getContext('2d');
 
 let size = 20;
 let isPressed = false;
 
 canvas.addEventListener('mousedown', () => {
-    ifPressed = true;
+    isPressed = true;
 });
 
 canvas.addEventListener('mouseup', () => {
-    ifPressed = false;
+    isPressed = false;
 });
 
 canvas.addEventListener('mousemove', (e) => {
@@ -27,6 +29,22 @@ function drawCricle(x, y) {
     ctx.arc(x, y, size, 0, Math.PI * 2);
     ctx.fill();
 }
+
+increaseBtn.addEventListener('click', () =>{
+    size += 5;
+
+    if(size > 50) {
+        size = 50;
+    }
+})
+
+decreaseBtn.addEventListener('click', () =>{
+    size -= 5;
+
+    if(size < 5) {
+        size = 5;
+    }
+})
 
 /*function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
